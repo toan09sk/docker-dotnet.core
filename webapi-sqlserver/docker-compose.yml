@@ -1,0 +1,26 @@
+  
+version: "3"
+services:
+    sql-server-db:
+        container_name: sql-server-db
+        image: aspnetcore/mentoring_db
+        build:
+           context: .
+           dockerfile: Mssql.Dockerfile
+        ports:
+            - "1433:1433"
+        environment:
+            SA_PASSWORD: "@Batoan01326754@"
+            ACCEPT_EULA: "Y"
+            MSSQL_PID: Express
+    web-api-mssql:
+        container_name: web-api
+        image: aspnetcore/mentoring_webapi
+        build:
+           context: .
+           dockerfile: WebApi.Dockerfile
+        depends_on:
+          - sql-server-db
+        ports:
+            - "8080:80"
+            - "8001:443"
