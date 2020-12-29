@@ -20,6 +20,21 @@ namespace webapi_sqlserver.Migrations
                 {
                     table.PrimaryKey("PK_Commands", x => x.Id);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Commands",
+                columns: new[] { "Id", "HowTo", "Line", "Platform" },
+                values: new object[] { 1, "Boil an egg", "Boil water", "Kettle & Pan" });
+
+            migrationBuilder.InsertData(
+                table: "Commands",
+                columns: new[] { "Id", "HowTo", "Line", "Platform" },
+                values: new object[] { 2, "Cut bread", "Get a knife", "Knife & chopping board" });
+
+            migrationBuilder.InsertData(
+                table: "Commands",
+                columns: new[] { "Id", "HowTo", "Line", "Platform" },
+                values: new object[] { 3, "Make cup of tea", "Place teabag in cup", "Kettle & Pan" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

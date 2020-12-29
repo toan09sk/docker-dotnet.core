@@ -2,11 +2,7 @@
 version: "3"
 services:
     sql-server-db:
-        container_name: sql-server-db
-        image: aspnetcore/mentoring_db
-        build:
-           context: .
-           dockerfile: Mssql.Dockerfile
+        image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
         ports:
             - "1433:1433"
         environment:

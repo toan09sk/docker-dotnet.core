@@ -66,3 +66,15 @@ dotnet new webapi -n DockerAPI
 docker build -t binarythistle/simpleapi .
 docker run -p 8080:80 binarythistle/simpleapi
 ```
+
+## Samplecode
+```
+git clone https://github.com/vnathv/Docker-DotNetCore-SqlServer.git
+netstat -a | find "LISTENING"
+
+TestP@ssw0rd
+
+docker run --name=codewithvijay -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=TestP@ssw0rd" -e "MSSQL_PID=Express" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+docker build -t dockersql .
+docker run --name dockernetcoresqlserver --link codewithvijay -e "ServerName=codewithvijay" -e "Database=Employee" -e "UserName=SA" -e "Password=TestP@ssw0rd" -p 8080:80 dockersql
+```

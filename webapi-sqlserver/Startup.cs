@@ -12,7 +12,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
 
 namespace webapi_sqlserver
@@ -32,7 +31,7 @@ namespace webapi_sqlserver
 
             services.AddDbContext<CommanderContext>(opt => opt.UseSqlServer(
                 Configuration.GetConnectionString("CommanderConnection"),
-                sqlserver => sqlserver.MigrationsAssembly("webapi_sqlserver")
+                sqlserver => sqlserver.MigrationsAssembly("webapi-sqlserver")
                 ));
 
             services.AddControllers().AddNewtonsoftJson(s =>

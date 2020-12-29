@@ -22,3 +22,18 @@ nuget.org --- NewtonsoftJson
 dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
 
 docker-compose up
+
+docker run -p 8080:80 -p 8081:443 webapi_sqlserver
+
+Example
+```
+TestP@ssw0rd
+
+docker run --name=codewithvijay -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=TestP@ssw0rd" -e "MSSQL_PID=Express" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+docker build -t dockersql .
+docker run --name dockernetcoresqlserver --link codewithvijay -e "ServerName=codewithvijay" -e "Database=Employee" -e "UserName=SA" -e "Password=TestP@ssw0rd" -p 8080:80 dockersql
+
+dotnet ef migrations add InitialMigration
+
+dotnet ef migrations add init --context CommanderContext
+```
